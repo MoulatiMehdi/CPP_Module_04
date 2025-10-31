@@ -9,6 +9,8 @@ class Animal
     Animal &operator=(const Animal &);
     ~Animal();
 
+    void makeSound();
+
   protected:
     std::string _type;
 
