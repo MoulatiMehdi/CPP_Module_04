@@ -1,21 +1,22 @@
 
 #include "Dog.hpp"
+#include "Debug.hpp"
 #include <iostream>
 #include <string>
 
 Dog::Dog() : Animal("Dog")
 {
-    std::cout << "Dog Default Constructor is called" << std::endl;
+    Debug::onConstructorDefault("Dog");
 }
 
 Dog::Dog(const Dog &other) : Animal(other)
 {
-    std::cout << "Dog Copy Constructor is called" << std::endl;
+    Debug::onConstructorCopy("Dog");
 }
 
 Dog &Dog::operator=(const Dog &other)
 {
-    std::cout << "Dog Copy Assignement Operator is called" << std::endl;
+    Debug::onOperatorCopyAssignment("Dog");
     if (&other == this)
         return *this;
     Animal::operator=(other);
@@ -24,7 +25,7 @@ Dog &Dog::operator=(const Dog &other)
 
 Dog::~Dog()
 {
-    std::cout << "Dog Destructor is called" << std::endl;
+    Debug::onDestructor("Dog");
 }
 
 const std::string &Dog::getType() const
@@ -34,5 +35,5 @@ const std::string &Dog::getType() const
 
 void Dog::makeSound() const
 {
-    std::cout << "Haow Haow Haow!!!" << std::endl;
+    std::cout << "Woof Woof Woof!!" << std::endl;
 }
