@@ -1,25 +1,26 @@
 #include "Animal.hpp"
+#include "Debug.hpp"
 #include <iostream>
 #include <string>
 
-Animal::Animal() : _type("unknown")
+Animal::Animal() : _type("Animal")
 {
-    std::cout << "Animal Default Constructor is called" << std::endl;
+    Debug::onConstructorDefault("Animal");
 }
 
 Animal::Animal(const std::string &type) : _type(type)
 {
-    std::cout << "Animal Paramter Constructor is called" << std::endl;
+    Debug::onConstructorParameter("Animal");
 }
 
 Animal::Animal(const Animal &other) : _type(other._type)
 {
-    std::cout << "Animal Copy Constructor is called" << std::endl;
+    Debug::onConstructorCopy("Animal");
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
-    std::cout << "Animal Copy Assignement Operator is called" << std::endl;
+    Debug::onOperatorCopyAssignment("Animal");
     if (&other == this)
         return *this;
     _type = other._type;
@@ -28,10 +29,10 @@ Animal &Animal::operator=(const Animal &other)
 
 Animal::~Animal()
 {
-    std::cout << "Animal Destructor is called" << std::endl;
+    Debug::onDestructor("Animal");
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const 
 {
     std::cout << "Animal " << _type << " make a sound" << std::endl;
 }
