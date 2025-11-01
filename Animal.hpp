@@ -12,7 +12,8 @@ class Animal
     Animal &operator=(const Animal &);
     ~Animal();
 
-    void makeSound() const;
+    void               makeSound() const;
+    const std::string &getType() const;
 
   protected:
     std::string _type;
