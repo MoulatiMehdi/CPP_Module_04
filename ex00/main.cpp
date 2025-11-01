@@ -29,6 +29,10 @@ int main()
         i->makeSound();
         j->makeSound();
         meta->makeSound();
+
+        delete meta;
+        delete i;
+        delete j;
     }
     std::cout << std::endl;
     {
@@ -39,6 +43,9 @@ int main()
 
         i->makeSound();
         meta->makeSound();
+
+        delete meta;
+        delete i;
     }
 
     {
