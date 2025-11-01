@@ -9,10 +9,8 @@ class Animal
     Animal &operator=(const Animal &);
     ~Animal();
 
-    void makeSound();
+    void makeSound() const;
 
   protected:
     std::string _type;
-
-  private:
 };
