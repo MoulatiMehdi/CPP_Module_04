@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef WRONG_ANIMAL_HPP
+#define WRONG_ANIMAL_HPP
 
 #include <string>
 
@@ -12,7 +12,7 @@ class WrongAnimal
     WrongAnimal &operator=(const WrongAnimal &);
     ~WrongAnimal();
 
-    void       makeSound() const;
+    void               makeSound() const;
     const std::string &getType() const;
 
   protected:
