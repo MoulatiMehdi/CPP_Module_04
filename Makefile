@@ -15,7 +15,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@ 
 
-%.o : %.c
+%.o : %.c $(DEPS)
 	$(CXX) $(CXXFLAGS) -c  $< -o $@
 
 clean : 
