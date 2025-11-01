@@ -1,20 +1,21 @@
 #include "Cat.hpp"
+#include "Debug.hpp"
 #include <iostream>
 #include <string>
 
 Cat::Cat() : Animal("Cat")
 {
-    std::cout << "Cat Default Constructor is called" << std::endl;
+    Debug::onConstructorDefault("Cat");
 }
 
 Cat::Cat(const Cat &other) : Animal(other)
 {
-    std::cout << "Cat Copy Constructor is called" << std::endl;
+    Debug::onConstructorParameter("Cat");
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
-    std::cout << "Cat Copy Assignement Operator is called" << std::endl;
+    Debug::onOperatorCopyAssignment("Cat");
     if (&other == this)
         return *this;
     Animal::operator=(other);
@@ -23,7 +24,7 @@ Cat &Cat::operator=(const Cat &other)
 
 Cat::~Cat()
 {
-    std::cout << "Cat Destructor is called" << std::endl;
+    Debug::onDestructor("Cat");
 }
 
 const std::string &Cat::getType() const
@@ -33,5 +34,5 @@ const std::string &Cat::getType() const
 
 void Cat::makeSound() const
 {
-    std::cout << "Meow" << std::endl;
+    std::cout << "Meow Meow Meow!!" << std::endl;
 }
