@@ -28,11 +28,6 @@ Dog::~Dog()
     Debug::onDestructor("Dog");
 }
 
-const std::string &Dog::getType() const
-{
-    return _type;
-}
-
 void Dog::makeSound() const
 {
     std::cout << "Woof Woof Woof!!" << std::endl;
