@@ -27,11 +27,6 @@ Cat::~Cat()
     Debug::onDestructor("Cat");
 }
 
-const std::string &Cat::getType() const
-{
-    return _type;
-}
-
 void Cat::makeSound() const
 {
     std::cout << "Meow Meow Meow!!" << std::endl;
