@@ -1,3 +1,6 @@
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
+
 #include <string>
 
 class Debug
@@ -17,3 +20,5 @@ class Debug
     static void onOperatorCopyAssignment(const std::string &name);
     static void onDestructor(const std::string &name);
 };
+
+#endif
