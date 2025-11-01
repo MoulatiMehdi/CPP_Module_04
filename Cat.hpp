@@ -2,7 +2,6 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
-#include <string>
 
 class Cat : public Animal
 {
@@ -12,8 +11,7 @@ class Cat : public Animal
     Cat &operator=(const Cat &);
     ~Cat();
 
-    void               makeSound() const;
-    const std::string &getType() const;
+    void makeSound() const;
 };
 
 #endif
