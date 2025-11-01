@@ -32,7 +32,7 @@ Animal::~Animal()
     Debug::onDestructor("Animal");
 }
 
-void Animal::makeSound() const 
+void Animal::makeSound() const
 {
-    std::cout << "Animal " << _type << " make a sound" << std::endl;
+    std::cout << "<Animal Sound>!!!" << std::endl;
 }
