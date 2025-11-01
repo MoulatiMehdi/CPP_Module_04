@@ -4,13 +4,13 @@
 int main(int, char *[])
 {
     Dog       a;
-    const Dog b = a;
     Dog c = a;
+    const Dog b = a;
 
     a = b;
 
-    std::cout << b.getType() << std::endl;
-    std::cout << a.getType() << std::endl;
+    std::cout << "b type is : " << b.getType() << std::endl;
+    std::cout << "a type is : "<< a.getType() << std::endl;
     a.makeSound();
     b.makeSound();
 

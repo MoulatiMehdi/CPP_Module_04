@@ -6,8 +6,8 @@ RMFLAGS = -rf
 
 
 NAME = run 
-DEPS = Animal.hpp Dog.hpp
-SRCS = Animal.cpp main.cpp Dog.cpp 
+DEPS = Animal.hpp Dog.hpp Debug.hpp
+SRCS = Animal.cpp main.cpp Dog.cpp Debug.cpp 
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
