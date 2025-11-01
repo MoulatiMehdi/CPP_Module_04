@@ -4,8 +4,8 @@ CXX = c++
 RMFLAGS = -rf 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
 
-DEPS = Animal.hpp Cat.hpp Debug.hpp Dog.hpp
-SRCS = Animal.cpp Cat.cpp Debug.cpp Dog.cpp main.cpp
+DEPS = Debug.hpp Animal.hpp Cat.hpp Dog.hpp WrongCat.hpp WrongAnimal.hpp
+SRCS = Debug.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 NAME = run 
