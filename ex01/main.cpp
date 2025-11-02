@@ -56,16 +56,31 @@ int main()
     title("\t Const Objects");
     {
         const Cat a;
-        Cat b = a;
+        Cat       b = a;
 
         b = a;
+        std::cout << a.getType() << std::endl;
+        a.makeSound();
     }
     std::cout << std::endl;
     {
         const Dog a;
-        Dog b = a;
+        Dog       b = a;
 
         b = a;
+
+        std::cout << a.getType() << std::endl;
+        a.makeSound();
+    }
+    std::cout << std::endl;
+    {
+        const Animal a;
+        Animal       b = a;
+
+        b = a;
+
+        std::cout << a.getType() << std::endl;
+        a.makeSound();
     }
     std::cout << std::endl;
     return 0;
