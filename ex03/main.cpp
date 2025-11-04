@@ -3,7 +3,7 @@
 #include "Ice.hpp"
 #include <iostream>
 
-int main(int argc, char *argv[])
+int main(int , char *[])
 {
     AMateria *a = new Cure();
     AMateria *b = new Ice();
