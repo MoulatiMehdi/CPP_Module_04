@@ -3,21 +3,14 @@
 #include "ICharacter.hpp"
 #include <cstring>
 
-Character::Character(const std::string &name)
-    : _name(name),
-      _size(0),
-      _inventory()
+Character::Character(const std::string &name) : _name(name), _slot()
 {
-    std::memset(_inventory, 0, sizeof(_inventory[0]) * _capacity);
+    std::memset(_slot, INVALID, sizeof(_slot[0]) * CAPACITY);
 }
 
-Character::Character(const Character &other)
-    : _name(other._name),
-      _size(other._size)
+Character::Character(const Character &other) : _name(other._name), _slot()
 {
-    std::memcpy(
-        _inventory, other._inventory, sizeof(_inventory[0]) * _capacity
-    );
+    std::memcpy(_slot, other._slot, sizeof(_slot[0]) * CAPACITY);
 }
 
 Character &Character::operator=(const Character &other)
@@ -25,64 +18,46 @@ Character &Character::operator=(const Character &other)
     if (&other == this)
         return *this;
     _name = other._name;
-    std::memcpy(
-        _inventory, other._inventory, sizeof(_inventory[0]) * _capacity
-    );
+    std::memcpy(_slot, other._slot, sizeof(_slot[0]) * CAPACITY);
     return *this;
 }
 
 Character::~Character() {}
 
-bool Character::isIndexValid(int idx) const
+const std::string &Character::getName() const
 {
-    return idx >= 0 && idx < _size;
+    return _name;
 }
 
-bool Character::isMateriaExist(int idx) const
+bool Character::isInRange(int idx) const
 {
-    if (!isIndexValid(idx))
-        return false;
-    return _inventory[idx] != NULL;
-}
-
-bool Character::isFull() const
-{
-    return _size == _capacity;
-}
-
-bool Character::isEmpty() const
-{
-    return _size == 0;
+    return idx >= 0 && idx < CAPACITY;
 }
 
 void Character::use(int idx, ICharacter &target)
 {
-    if (!isMateriaExist(idx))
+    if (!isInRange(idx))
         return;
-    _inventory[idx]->use(target);
 }
 
 void Character::equip(AMateria *m)
 {
-    if (m == 0 || isFull())
+    if (m == 0)
         return;
-    _inventory[_size] = m->clone();
-    _size++;
+    for (int i = 0; i < CAPACITY; i++)
+    {
+        if (_slot[i] == INVALID)
+            _slot[i] = i;
+    }
 }
 
 void Character::unequip(int idx)
 {
-    if (isEmpty() || !isMateriaExist(idx))
+    if (!isInRange(idx))
         return;
-    for (int i = idx; i < _size - 1; i++)
+    for (int i = 0; i < CAPACITY; i++)
     {
-        _inventory[i] = _inventory[i + 1];
+        if (_slot[i] == INVALID)
+            _slot[i] = i;
     }
-    _inventory[_size - 1] = 0;
-    _size--;
-}
-
-const std::string &Character::getName() const
-{
-    return _name;
 }

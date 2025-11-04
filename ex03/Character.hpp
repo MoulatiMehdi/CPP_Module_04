@@ -7,15 +7,13 @@
 class Character : public ICharacter
 {
   private:
-    const static int _capacity = 4;
+    const static int CAPACITY = 4;
+    const static int INVALID  = -1;
     std::string      _name;
-    int              _size;
-    AMateria        *_inventory[_capacity];
+    int              _slot[CAPACITY];
+    
 
-    bool isIndexValid(int idx) const;
-    bool isMateriaExist(int idx) const;
-    bool isFull() const;
-    bool isEmpty() const;
+    bool isInRange(int idx) const;
 
   public:
     Character(const std::string &name);
