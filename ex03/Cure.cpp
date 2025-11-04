@@ -3,7 +3,7 @@
 #include "ICharacter.hpp"
 #include <iostream>
 
-Cure::Cure() : AMateria("ice") {}
+Cure::Cure() : AMateria("cure") {}
 
 Cure::Cure(const Cure &other) : AMateria(other._type) {}
 
