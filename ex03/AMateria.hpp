@@ -1,0 +1,23 @@
+#ifndef A_MATERIA_HPP
+#define A_MATERIA_HPP
+
+#include "ICharacter.hpp"
+#include <string>
+
+class AMateria
+{
+  protected:
+    const std::string _type;
+
+  public:
+    AMateria(const std::string &type);
+    AMateria(const AMateria &other);
+    AMateria &operator=(const AMateria &other);
+    ~AMateria();
+
+    const std::string &getType() const;
+    virtual AMateria  *clone() const = 0;
+    virtual void       use(ICharacter &target);
+};
+
+#endif
