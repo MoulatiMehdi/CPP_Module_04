@@ -1,6 +1,6 @@
 #include "Inventory.hpp"
 
-int main(int argc, char *argv[])
+int main(int , char *[])
 {
     Inventory a;
     return 0;

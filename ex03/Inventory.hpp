@@ -10,7 +10,8 @@ class Inventory
     static const Index _capacity = 4;
 
     Index     _size;
-    AMateria *_items[_capacity];
+    AMateria *_used[_capacity];
+    AMateria *_unused[_capacity];
 
   public:
     static const Index npos = -1;
@@ -21,8 +22,6 @@ class Inventory
     ~Inventory();
 
     Index find(AMateria *m) const;
-    bool  isFull() const;
-    bool  isEmpty() const;
 
     void init();
     void clear();
