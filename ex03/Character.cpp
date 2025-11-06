@@ -3,14 +3,23 @@
 #include "ICharacter.hpp"
 #include <cstring>
 
-Character::Character(const std::string &name) : _name(name), _slot()
+Character::Character(const std::string &name) : _name(name), _inventory()
 {
-    std::memset(_slot, INVALID, sizeof(_slot[0]) * CAPACITY);
+    for (int i = 0; i < _capacity; i++)
+    {
+        _inventory[i] = NULL;
+    }
 }
 
-Character::Character(const Character &other) : _name(other._name), _slot()
+Character::Character(const Character &other) : _name(other._name), _inventory()
 {
-    std::memcpy(_slot, other._slot, sizeof(_slot[0]) * CAPACITY);
+    for (int i = 0; i < _capacity; i++)
+    {
+        if (other._inventory[i])
+            _inventory[i] = _inventory[i]->clone();
+        else
+            _inventory[i] = NULL;
+    }
 }
 
 Character &Character::operator=(const Character &other)
@@ -18,46 +27,49 @@ Character &Character::operator=(const Character &other)
     if (&other == this)
         return *this;
     _name = other._name;
-    std::memcpy(_slot, other._slot, sizeof(_slot[0]) * CAPACITY);
+    for (int i = 0; i < _capacity; i++)
+    {
+        if (other._inventory[i])
+            _inventory[i] = _inventory[i]->clone();
+        else
+            _inventory[i] = NULL;
+    }
     return *this;
 }
 
-Character::~Character() {}
+Character::~Character()
+{
+    for (int i = 0; i < _capacity; i++)
+    {
+        if (_inventory[i])
+            delete _inventory[i];
+    }
+}
 
 const std::string &Character::getName() const
 {
     return _name;
 }
 
-bool Character::isInRange(int idx) const
-{
-    return idx >= 0 && idx < CAPACITY;
-}
-
 void Character::use(int idx, ICharacter &target)
 {
-    if (!isInRange(idx))
+    if (idx >= _capacity || idx < 0 || _inventory[idx] == NULL)
         return;
+    _inventory[idx]->use(target);
 }
 
 void Character::equip(AMateria *m)
 {
-    if (m == 0)
-        return;
-    for (int i = 0; i < CAPACITY; i++)
+    for (int i = 0; i < _capacity; i++)
     {
-        if (_slot[i] == INVALID)
-            _slot[i] = i;
+        if (_inventory[i] == NULL)
+            _inventory[i] = m;
     }
 }
 
 void Character::unequip(int idx)
 {
-    if (!isInRange(idx))
+    if (idx >= _capacity || idx < 0 || !_inventory[idx])
         return;
-    for (int i = 0; i < CAPACITY; i++)
-    {
-        if (_slot[i] == INVALID)
-            _slot[i] = i;
-    }
+    _inventory[idx] = NULL;
 }
