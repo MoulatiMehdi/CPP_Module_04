@@ -2,12 +2,15 @@
 #define A_MATERIA_HPP
 
 #include "ICharacter.hpp"
+#include "Pool.hpp"
 #include <string>
 
 class AMateria
 {
+
   protected:
     const std::string _type;
+    static Pool       pool;
 
   public:
     AMateria(const std::string &type);
