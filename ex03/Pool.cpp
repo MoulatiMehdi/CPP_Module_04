@@ -1,7 +1,4 @@
 #include "Pool.hpp"
-#include "AMateria.hpp"
-
-Pool::Node *head = 0;
 
 Pool::Pool() : _head(0) {}
 
@@ -22,13 +19,14 @@ Pool::~Pool()
     while (p)
     {
         next = p->_next;
+        ::operator delete(p->_data);
         delete p;
         p = next;
     }
-    _head = NULL;
+    _head = 0;
 }
 
-Pool::Node *Pool::find(const AMateria *ptr) const
+Pool::Node *Pool::find(void *ptr) const
 {
     Pool::Node *p = _head;
     while (p)
@@ -40,28 +38,28 @@ Pool::Node *Pool::find(const AMateria *ptr) const
     return 0;
 }
 
-void Pool::add(const AMateria *ptr)
+void Pool::add(void *ptr)
 {
-    if (ptr == 0 || find(ptr) == 0)
+    if (find(ptr) != 0)
         return;
     Node *n  = new Node(ptr);
     n->_next = _head;
     _head    = n;
 }
 
-void Pool::remove(const AMateria *ptr)
+void Pool::remove(void *ptr)
 {
     Pool::Node *curr = _head;
-    Pool::Node *prev = NULL;
+    Pool::Node *prev = 0;
 
-    if (ptr == NULL || _head == NULL)
+    if (_head == 0)
         return;
     if (_head->_data == ptr)
     {
         if (curr)
             _head = curr->_next;
         else
-            _head = NULL;
+            _head = 0;
         return delete curr;
     }
     while (curr->_next)
@@ -78,7 +76,7 @@ void Pool::remove(const AMateria *ptr)
 
 /*******************************************************************/
 
-Pool::Node::Node(const AMateria *data) : _next(0), _data(data) {}
+Pool::Node::Node(void *data) : _data(data), _next(0) {}
 
 Pool::Node::Node(const Pool::Node &other)
     : _data(other._data),
@@ -86,19 +84,9 @@ Pool::Node::Node(const Pool::Node &other)
 {
 }
 
-Pool::Node &Pool::Node::operator=(const Pool::Node &other)
+Pool::Node &Pool::Node::operator=(const Pool::Node &)
 {
-    if (this == &other)
-        return *this;
-    _data = other._data;
-    _next = other._next;
     return *this;
 }
 
-Pool::Node::~Node()
-{
-    if (_data)
-        delete _data;
-    _data = NULL;
-    _next = NULL;
-}
+Pool::Node::~Node() {}
