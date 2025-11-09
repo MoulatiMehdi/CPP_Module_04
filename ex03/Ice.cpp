@@ -28,12 +28,12 @@ void Ice::use(ICharacter &character)
 void *Ice::operator new(std::size_t sz)
 {
     void *p = ::operator new(sz);
-    track(p);
+    pool.add(p);
     return p;
 }
 
 void Ice::operator delete(void *ptr)
 {
-    untrack(ptr);
+    pool.remove(ptr);
     ::operator delete(ptr);
 }
