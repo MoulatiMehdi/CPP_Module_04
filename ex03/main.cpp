@@ -8,16 +8,16 @@ int main(int, char *[])
 {
     MateriaSource a;
     MateriaSource b;
-    AMateria     *d;
-
-    a.learnMateria(new Cure());
+    AMateria * c = new Cure();
+    a.learnMateria(c);
     a.learnMateria(new Ice());
-    d               = a.createMateria("ice");
+    a.learnMateria(c);
     b               = a;
-    MateriaSource c = b;
 
-    delete d;
-    std::cout << d << std::endl;
+    std::cout << a.createMateria("cure") << std::endl;
+    std::cout << a.createMateria("cure") << std::endl;
+    std::cout << a.createMateria("cure") << std::endl;
+    std::cout << a.createMateria("Unknown") << std::endl;
 
     return 0;
 }
