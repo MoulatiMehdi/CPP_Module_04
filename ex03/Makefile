@@ -4,9 +4,8 @@ RM  = rm
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g 
 RMFLAGS  = -rf 
 
-ABST =  ICharacter.hpp 
-DEPS = AMateria.hpp Ice.hpp Cure.hpp $(ABST)
-SRCS = AMateria.cpp Ice.cpp Cure.cpp main.cpp 
+DEPS = $(wildcard *.hpp) 
+SRCS = $(wildcard *.cpp) 
 OBJS = $(SRCS:.cpp=.o)
 
 NAME = run 

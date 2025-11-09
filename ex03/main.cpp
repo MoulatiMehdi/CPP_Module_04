@@ -10,7 +10,6 @@ int main(int, char *[])
     AMateria *c = a->clone();
     AMateria *d = b->clone();
 
-    Cure e = *(dynamic_cast<Cure *>(a));
 
     std::cout << a << "\n" << c << std::endl;
     std::cout << b << "\n" << d << std::endl;
@@ -19,9 +18,5 @@ int main(int, char *[])
     std::cout << c->getType() << std::endl;
     std::cout << d->getType() << std::endl;
 
-    delete a;
-    delete b;
-    delete c;
-    delete d;
     return 0;
 }
