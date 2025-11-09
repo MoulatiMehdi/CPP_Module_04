@@ -13,10 +13,21 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 {
     for (int i = 0; i < _capacity; i++)
     {
-        if (other._used[i])
+        _used[i] = NULL;
+    }
+    for (int i = 0; i < _capacity; i++)
+    {
+        if (_used[i] == NULL && other._used[i])
+        {
             _used[i] = other._used[i]->clone();
-        else
-            _used[i] = NULL;
+            for (int j = i + 1; j < _capacity; j++)
+            {
+                if (other._used[i] == other._used[j])
+                {
+                    _used[j] = _used[i];
+                }
+            }
+        }
     }
 }
 
@@ -24,25 +35,28 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
     if (&other == this)
         return *this;
-    this->~MateriaSource();
     for (int i = 0; i < _capacity; i++)
     {
-        if (other._used[i])
+        _used[i] = NULL;
+    }
+    for (int i = 0; i < _capacity; i++)
+    {
+        if (_used[i] == NULL && other._used[i])
+        {
             _used[i] = other._used[i]->clone();
-        else
-            _used[i] = NULL;
+            for (int j = i + 1; j < _capacity; j++)
+            {
+                if (other._used[i] == other._used[j])
+                {
+                    _used[j] = _used[i];
+                }
+            }
+        }
     }
     return *this;
 }
 
-MateriaSource::~MateriaSource()
-{
-    for (int i = 0; i < _capacity; i++)
-    {
-        if (_used[i])
-            delete _used[i];
-    }
-}
+MateriaSource::~MateriaSource() {}
 
 void MateriaSource::learnMateria(AMateria *m)
 {
