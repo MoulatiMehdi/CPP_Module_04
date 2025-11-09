@@ -24,3 +24,16 @@ void Ice::use(ICharacter &character)
     std::cout << "* shoots an ice bolt at " << character.getName() << " *"
               << std::endl;
 }
+
+void *Ice::operator new(std::size_t sz)
+{
+    void *p = ::operator new(sz);
+    track(p);
+    return p;
+}
+
+void Ice::operator delete(void *ptr)
+{
+    untrack(ptr);
+    ::operator delete(ptr);
+}
