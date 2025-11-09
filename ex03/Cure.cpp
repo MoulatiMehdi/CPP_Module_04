@@ -28,12 +28,12 @@ void Cure::use(ICharacter &character)
 void *Cure::operator new(std::size_t sz)
 {
     void *p = ::operator new(sz);
-    track(p);
+    pool.add(p);
     return p;
 }
 
 void Cure::operator delete(void *ptr)
 {
-    untrack(ptr);
+    pool.remove(ptr);
     ::operator delete(ptr);
 }
