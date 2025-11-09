@@ -25,13 +25,3 @@ void AMateria::use(ICharacter &target)
 {
     std::cout << _type << " : " << target.getName() << std::endl;
 }
-
-void AMateria::track(void *ptr)
-{
-    pool.add(ptr);
-}
-
-void AMateria::untrack(void *ptr)
-{
-    pool.remove(ptr);
-}
