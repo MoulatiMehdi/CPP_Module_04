@@ -27,28 +27,13 @@ void Ice::use(ICharacter &character)
 
 void *Ice::operator new(std::size_t sz)
 {
-    std::cout << "Ice new operator is called" << std::endl;
     void *p = ::operator new(sz);
-
+    track(p);
     return p;
 }
 
 void Ice::operator delete(void *ptr)
 {
-    std::cout << "Ice delete operator is called" << std::endl;
+    untrack(ptr);
     ::operator delete(ptr);
-}
-
-void *Ice::operator new[](std::size_t sz)
-{
-    std::cout << "Ice new operator is called" << std::endl;
-    void *p = ::operator new[](sz);
-
-    return p;
-}
-
-void Ice::operator delete[](void *ptr)
-{
-    std::cout << "Ice delete operator is called" << std::endl;
-    ::operator delete[](ptr);
 }

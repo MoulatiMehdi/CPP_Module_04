@@ -27,28 +27,13 @@ void Cure::use(ICharacter &character)
 
 void *Cure::operator new(std::size_t sz)
 {
-    std::cout << "Cure new operator is called" << std::endl;
     void *p = ::operator new(sz);
-
+    track(p);
     return p;
 }
 
 void Cure::operator delete(void *ptr)
 {
-    std::cout << "Cure delete operator is called" << std::endl;
+    untrack(ptr);
     ::operator delete(ptr);
-}
-
-void *Cure::operator new[](std::size_t sz)
-{
-    std::cout << "Cure new operator is called" << std::endl;
-    void *p = ::operator new[](sz);
-
-    return p;
-}
-
-void Cure::operator delete[](void *ptr)
-{
-    std::cout << "Cure delete operator is called" << std::endl;
-    ::operator delete[](ptr);
 }

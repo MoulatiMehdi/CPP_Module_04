@@ -14,8 +14,6 @@ class Cure : public AMateria
     Cure &operator=(const Cure &other);
     void *operator new(std::size_t sz);
     void  operator delete(void *ptr);
-    void *operator new[](std::size_t sz);
-    void  operator delete[](void *ptr);
 
     void      use(ICharacter &target);
     AMateria *clone() const;
