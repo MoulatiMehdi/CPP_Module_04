@@ -37,6 +37,8 @@ int main()
             else
                 a.learnMateria(new Cure());
         }
+
+        a.learnMateria(0);
         {
             MateriaSource b = a;
         }
@@ -62,6 +64,7 @@ int main()
         jack.unequip(1);
         jack.equip(new Ice());
         jack.equip(mm);
+        jack.equip(0);
 
         for (int i = -1; i < 6; i++)
         {
