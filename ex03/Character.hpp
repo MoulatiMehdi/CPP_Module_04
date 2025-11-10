@@ -11,6 +11,9 @@ class Character : public ICharacter
     std::string      _name;
     AMateria        *_inventory[_capacity];
 
+    void copyInventory(AMateria *const inventory[4]);
+    void clear();
+
   public:
     Character(const std::string &name);
     Character(const Character &other);
