@@ -3,17 +3,17 @@
 #include <iostream>
 #include <string>
 
-Animal::Animal() : _type("Animal")
+Animal::Animal() : type("Animal")
 {
     Debug::onConstructorDefault("Animal");
 }
 
-Animal::Animal(const std::string &type) : _type(type)
+Animal::Animal(const std::string &type) : type(type)
 {
     Debug::onConstructorParameter("Animal");
 }
 
-Animal::Animal(const Animal &other) : _type(other._type)
+Animal::Animal(const Animal &other) : type(other.type)
 {
     Debug::onConstructorCopy("Animal");
 }
@@ -23,7 +23,7 @@ Animal &Animal::operator=(const Animal &other)
     Debug::onOperatorCopyAssignment("Animal");
     if (&other == this)
         return *this;
-    _type = other._type;
+    type = other.type;
     return *this;
 }
 
@@ -39,5 +39,5 @@ void Animal::makeSound() const
 
 const std::string &Animal::getType() const
 {
-    return _type;
+    return type;
 }
