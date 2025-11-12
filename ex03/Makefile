@@ -1,22 +1,22 @@
-CXX = c++
 RM  = rm 
+CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g 
 RMFLAGS  = -rf 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-DEPS = $(wildcard *.hpp) 
-SRCS = $(wildcard *.cpp) 
+DEPS = AMateria.hpp  Character.hpp  Cure.hpp  Ice.hpp  MateriaSource.hpp  Pool.hpp ICharacter.hpp IMateriaSource.hpp
+SRCS = AMateria.cpp  Character.cpp  Cure.cpp  Ice.cpp  MateriaSource.cpp  Pool.cpp main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
-
 NAME = run 
 
 all : $(NAME)
 
-$(NAME) : $(OBJS) 
-	$(CXX) $(CXXFLAGS) -o $@  $^  
+$(NAME) : $(OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ 
 
-%.o : %.c $(DEPS) 
-	$(CXX) $(CXXFLAGS) -c -o $@  $< 
+%.o : %.c $(DEPS)
+	$(CXX) $(CXXFLAGS) -c  $< -o $@
 
 clean : 
 	$(RM) $(RMFLAGS) $(OBJS)
@@ -26,4 +26,4 @@ fclean : clean
 
 re : fclean all 
 
-.PHONY : all fclean clean re 
+.PHONY : re fclean clean all 

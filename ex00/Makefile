@@ -1,8 +1,8 @@
-RM = rm 
+RM  = rm 
 CXX = c++
 
-RMFLAGS = -rf 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -g3
+RMFLAGS  = -rf 
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 DEPS = Debug.hpp Animal.hpp Cat.hpp Dog.hpp WrongCat.hpp WrongAnimal.hpp
 SRCS = Debug.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp WrongAnimal.cpp  main.cpp

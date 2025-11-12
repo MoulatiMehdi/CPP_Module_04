@@ -1,8 +1,6 @@
-
 #include "Dog.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
 Dog::Dog() : Animal("Dog")
 {

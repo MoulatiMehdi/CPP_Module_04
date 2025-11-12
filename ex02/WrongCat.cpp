@@ -1,7 +1,6 @@
 #include "WrongCat.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
 WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {

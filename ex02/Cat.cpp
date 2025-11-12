@@ -2,7 +2,6 @@
 #include "Brain.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
 Cat::Cat() : Animal("Cat"), brain(new Brain())
 {
@@ -11,7 +10,7 @@ Cat::Cat() : Animal("Cat"), brain(new Brain())
 
 Cat::Cat(const Cat &other) : Animal(other), brain(new Brain(*other.brain))
 {
-    Debug::onConstructorParameter("Cat");
+    Debug::onConstructorCopy("Cat");
 }
 
 Cat &Cat::operator=(const Cat &other)

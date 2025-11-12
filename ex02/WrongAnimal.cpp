@@ -1,19 +1,18 @@
 #include "WrongAnimal.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
-WrongAnimal::WrongAnimal() : _type("WrongAnimal")
+WrongAnimal::WrongAnimal() : type("WrongAnimal")
 {
     Debug::onConstructorDefault("WrongAnimal");
 }
 
-WrongAnimal::WrongAnimal(const std::string &type) : _type(type)
+WrongAnimal::WrongAnimal(const std::string &type) : type(type)
 {
     Debug::onConstructorParameter("WrongAnimal");
 }
 
-WrongAnimal::WrongAnimal(const WrongAnimal &other) : _type(other._type)
+WrongAnimal::WrongAnimal(const WrongAnimal &other) : type(other.type)
 {
     Debug::onConstructorCopy("WrongAnimal");
 }
@@ -23,7 +22,7 @@ WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
     Debug::onOperatorCopyAssignment("WrongAnimal");
     if (&other == this)
         return *this;
-    _type = other._type;
+    type = other.type;
     return *this;
 }
 
@@ -39,5 +38,5 @@ void WrongAnimal::makeSound() const
 
 const std::string &WrongAnimal::getType() const
 {
-    return _type;
+    return type;
 }

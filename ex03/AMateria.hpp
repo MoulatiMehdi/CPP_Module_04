@@ -11,11 +11,11 @@ class AMateria
   protected:
     const std::string _type;
     static Pool       pool;
-
-  public:
     AMateria(const std::string &type);
     AMateria(const AMateria &other);
     AMateria &operator=(const AMateria &other);
+
+  public:
     virtual ~AMateria();
 
     const std::string &getType() const;

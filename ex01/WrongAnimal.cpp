@@ -1,7 +1,6 @@
 #include "WrongAnimal.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
 WrongAnimal::WrongAnimal() : type("WrongAnimal")
 {

@@ -1,9 +1,7 @@
-
 #include "Dog.hpp"
 #include "Brain.hpp"
 #include "Debug.hpp"
 #include <iostream>
-#include <string>
 
 Dog::Dog() : Animal("Dog"), brain(new Brain())
 {

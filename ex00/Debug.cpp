@@ -4,7 +4,7 @@
 #include <string>
 
 const std::string Debug::sep   = " : ";
-const int         Debug::width = 11;
+const int         Debug::width = 15;
 
 Debug::Debug() {}
 
